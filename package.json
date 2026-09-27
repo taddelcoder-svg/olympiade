@@ -1,0 +1,16 @@
+{
+  "name": "olympiade",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Olympiade – bis zu 8 Leute spielen die Spiele der Swimming-Lions-Sammlung mit Punkten, Joker und Medaillen",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "ws": "^8.22.0"
+  }
+}

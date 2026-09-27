@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Olympiade – Swimming Lions</title>
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="hub.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="kopf">
+    <a class="marke" href="/" aria-label="Olympiade – Startseite"><span aria-hidden="true">🏅</span> Olympiade</a>
+    <span id="kopfCode" class="chip" hidden></span>
+  </header>
+
+  <!-- Start: Name, Tier, neue Olympiade oder Code -->
+  <section id="start" class="schirm" hidden>
+    <div class="studio"><span aria-hidden="true">🦁</span> Swimming Lions</div>
+    <h1>Olympiade</h1>
+    <p class="intro">Bis zu 8 Leute, alle Spiele der Sammlung, ein Sieger. Jede Disziplin bringt Punkte, am Ende gibt es Medaillen und ein Podest.</p>
+    <div class="leine" role="presentation"></div>
+    <div class="karte start-karte">
+      <label class="feld"><span>Dein Name</span>
+        <input id="name" maxlength="16" autocomplete="nickname" placeholder="z. B. Matteo">
+      </label>
+      <div class="feld"><span>Dein Tier</span><div id="emojiWahl" class="emoji-wahl" role="radiogroup" aria-label="Tier wählen"></div></div>
+      <div class="start-knoepfe">
+        <button id="neu" class="knopf haupt">Neue Olympiade</button>
+        <form id="beitretenForm" class="zeile">
+          <input id="code" maxlength="4" placeholder="CODE" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Code der Olympiade">
+          <button class="knopf">Beitreten</button>
+        </form>
+      </div>
+      <p id="startFehler" class="fehler" role="alert"></p>
+    </div>
+  </section>
+
+  <!-- Lobby -->
+  <section id="lobby" class="schirm" hidden>
+    <div class="lobby-kopf">
+      <div>
+        <p class="ueber">Code zum Mitmachen</p>
+        <div class="code-gross" id="lobbyCode">----</div>
+      </div>
+      <div class="einladung">
+        <input id="einladeLink" readonly aria-label="Einladungslink">
+        <button id="linkKopieren" class="knopf zweit">Link kopieren</button>
+      </div>
+    </div>
+    <div class="spalten">
+      <div class="karte">
+        <h2>Teilnehmer <span id="anzahl" class="leise"></span></h2>
+        <ul id="lobbySpieler" class="spielerliste"></ul>
+        <div class="feld"><span>Dein Tier</span><div id="lobbyEmoji" class="emoji-wahl" role="radiogroup" aria-label="Tier wählen"></div></div>
+      </div>
+      <div class="karte">
+        <h2>Disziplinen</h2>
+        <p id="planHinweis" class="leise"></p>
+        <ol id="plan" class="plan"></ol>
+        <div id="planOptionen" class="optionen"></div>
+      </div>
+    </div>
+    <div class="aktion">
+      <button id="starten" class="knopf haupt gross">Olympiade starten</button>
+      <p id="lobbyInfo" class="leise"></p>
+      <button id="verlassen" class="knopf leer">Olympiade verlassen</button>
+    </div>
+  </section>
+
+  <!-- Laufende Disziplin -->
+  <section id="disziplin" class="schirm" hidden>
+    <div class="disziplin-kopf">
+      <div id="dIcon" class="icon gross"></div>
+      <div>
+        <p class="ueber" id="dNr"></p>
+        <h1 id="dName"></h1>
+        <p id="dEinst" class="leise"></p>
+      </div>
+    </div>
+    <p id="dFinale" class="banner" hidden>🔥 Finale – alle Punkte zählen doppelt!</p>
+    <p id="dRegel" class="regel"></p>
+    <div class="spalten">
+      <div class="karte">
+        <p id="dGruppe" class="leise"></p>
+        <button id="spielen" class="knopf haupt gross">Jetzt spielen →</button>
+        <div id="jokerBox" class="joker" hidden>
+          <label class="schalter"><input type="checkbox" id="joker"> <span>🃏 Joker einsetzen: doppelte Punkte in dieser Disziplin</span></label>
+          <p id="jokerInfo" class="leise klein"></p>
+        </div>
+        <p id="dMein" class="mein"></p>
+      </div>
+      <div class="karte">
+        <h2>Wer ist wo?</h2>
+        <ul id="dStatus" class="statusliste"></ul>
+      </div>
+    </div>
+    <details id="leitung" class="karte leitung" hidden>
+      <summary>Leitung: Probleme lösen</summary>
+      <p class="leise">Falls ein Spiel hängt oder jemand nicht mitspielen kann.</p>
+      <div class="knopfreihe">
+        <button id="auswerten" class="knopf zweit">Jetzt auswerten</button>
+        <button id="handAuf" class="knopf zweit">Ergebnis von Hand</button>
+        <button id="ueberspringen" class="knopf zweit">Disziplin überspringen</button>
+      </div>
+      <p class="leise klein">„Jetzt auswerten“: Wer noch kein Ergebnis hat, bekommt 0 Punkte.</p>
+      <div id="hand" hidden>
+        <p>Reihenfolge festlegen (oben = Platz 1):</p>
+        <ol id="handListe" class="handliste"></ol>
+        <button id="handOk" class="knopf haupt">So werten</button>
+      </div>
+    </details>
+  </section>
+
+  <!-- Wertung nach einer Disziplin -->
+  <section id="wertung" class="schirm" hidden>
+    <p class="ueber" id="wNr"></p>
+    <h1 id="wTitel"></h1>
+    <div class="spalten">
+      <div class="karte">
+        <h2>Ergebnis</h2>
+        <ol id="wErgebnis" class="ergebnisliste"></ol>
+      </div>
+      <div class="karte">
+        <h2>Gesamtwertung</h2>
+        <ol id="wGesamt" class="tabelle"></ol>
+      </div>
+    </div>
+    <div class="aktion">
+      <button id="weiter" class="knopf haupt gross"></button>
+      <p id="wInfo" class="leise"></p>
+    </div>
+  </section>
+
+  <!-- Siegerehrung -->
+  <section id="ende" class="schirm" hidden>
+    <p class="ueber">Siegerehrung</p>
+    <h1 id="eTitel">Die Olympiade ist vorbei!</h1>
+    <div id="podest" class="podest"></div>
+    <div class="spalten">
+      <div class="karte">
+        <h2>Endstand</h2>
+        <ol id="eGesamt" class="tabelle"></ol>
+      </div>
+      <div class="karte">
+        <h2>Disziplinsieger</h2>
+        <ul id="eSieger" class="siegerliste"></ul>
+        <h2>Auszeichnungen</h2>
+        <ul id="eAuszeichnungen" class="siegerliste"></ul>
+      </div>
+    </div>
+    <div class="aktion">
+      <button id="nochmal" class="knopf haupt">Neue Olympiade</button>
+    </div>
+  </section>
+
+  <p id="verbindung" class="verbindung" hidden>Verbinde …</p>
+  <footer class="fuss">© Swimming Lions · Privates Hobbyprojekt · <a href="/datenschutz">Datenschutz</a></footer>
+</div>
+<div id="meldung" class="meldung" role="status" hidden></div>
+<script src="hub.js"></script>
+</body>
+</html>
