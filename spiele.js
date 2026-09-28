@@ -40,12 +40,13 @@ const SPIELE = {
     ]
   },
   panzer:{
-    sp:'ironhorizon', name:'Iron Horizon', emoji:'🛡️', pfad:'/iron-horizon/', wertung:'wert',
+    sp:'ironhorizon', name:'Iron Horizon', emoji:'🛡️', pfad:'/iron-horizon/', wertung:'wert', gruppeMax:6,
     online:'https://iron-horizon.onrender.com', lokal:10400,
-    regel:'Gefechts-Challenge: Alle fahren dieselbe Schlacht (gleiche Karte, gleicher Panzer, gleiche Gegner). Punkte für Abschüsse, Treffer, Zeit am Punkt und den Sieg. Ein Versuch.',
+    regel:'Online-Panzergefecht gegeneinander: Eure Gruppe wird auf Blau und Rot verteilt, freie Plätze fahren Bots, jeder wählt seinen Panzer. Punkte für den Sieg deines Teams, Abschüsse, Treffer und Zeit am Punkt. Ab 7 Leuten gibt es mehrere Gefechte, gewertet wird zusammen nach Punkten.',
     einst:[
       { id:'karte', name:'Karte', std:'border', werte:[['border', 'Grenzposten'], ['quarry', 'Steinbruch'], ['valley', 'Flusstal']] },
-      { id:'panzer', name:'Panzer', std:'luchs', werte:[['luchs', 'Luchs'], ['keiler', 'Keiler']] }
+      { id:'modus', name:'Modus', std:'domination', werte:[['domination', 'Vorherrschaft'], ['attack', 'Durchbruch']] },
+      { id:'bots', name:'Bots', std:'veteran', werte:[['recruit', 'Rekrut'], ['veteran', 'Veteran'], ['ace', 'Ass']] }
     ]
   },
   leben:{
