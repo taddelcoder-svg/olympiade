@@ -1,6 +1,6 @@
 # Olympiade
 
-Bis zu 8 Leute spielen die Spiele der Swimming-Lions-Sammlung als Disziplinen – mit Punkten (10/8/6/5/4/3/2/1), Joker, doppelt zählendem Finale, Medaillen und Siegerehrung.
+Bis zu 16 Leute spielen die Spiele der Swimming-Lions-Sammlung als Disziplinen – mit Punkten (15/12/10/8/7/6/5/4/3/2/1, ab Platz 12 keine), Joker, doppelt zählendem Finale, Medaillen und Siegerehrung.
 
 ## So funktioniert es
 
@@ -12,10 +12,10 @@ Signiert wird mit einem Schlüssel aus `ZUGANG_PASSWORT`. **Alle Dienste brauche
 
 | Disziplin | Modus im Spiel | Wertung |
 |---|---|---|
-| Löwen-Kart | ein Rennen, freie Plätze fahren Bots | Reihenfolge |
+| Löwen-Kart | ein Rennen, freie Plätze fahren Bots, ab 9 Leuten Vorläufe | Reihenfolge, über Vorläufe die Zielzeit |
 | Weltenbummler | gemeinsame Runden | Punkte → Reihenfolge |
 | Blaue Stunde | eigene Lobby, 3-Minuten-Rennen, ohne Fahrernamen | Punkte → Reihenfolge |
-| Weltreiche | Vorläufe à max. 4 Reiche, Zeitlimit, danach gewinnt das größte Reich | Reihenfolge je Vorlauf |
+| Weltreiche | Vorläufe à max. 4 Reiche, Zeitlimit, danach gewinnt das größte Reich | über Vorläufe: Größe am Ende bzw. wie lange durchgehalten |
 | Iron Horizon | Gefechts-Challenge mit festem Startwert, ein Versuch | Punktzahl |
 | LifeSim | Vermögens-Sprint mit frischer Figur | Vermögenszuwachs |
 

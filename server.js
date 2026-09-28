@@ -1,5 +1,5 @@
 'use strict';
-// Olympiade – Server: Lobby für bis zu 8 Leute, Disziplinen aus der Spielesammlung, Punkte und Medaillen.
+// Olympiade – Server: Lobby für bis zu 16 Leute, Disziplinen aus der Spielesammlung, Punkte und Medaillen.
 // Die Spiele selbst laufen auf ihren eigenen Servern. Wer eine Disziplin startet, bekommt ein
 // signiertes Ticket (olymp.js), mit dem er direkt im richtigen Raum landet. Das Spiel meldet
 // das Ergebnis an /api/ergebnis zurück, hier wird daraus die Wertung.
@@ -13,13 +13,13 @@ const werkzeug = require('./olymp').werkzeug();
 const { SPIELE, spielUrl } = require('./spiele');
 
 const PORT = Number(process.env.PORT) || 10500;
-const MAX_SPIELER = 8;
+const MAX_SPIELER = 16;
 const MAX_OLYMPIADEN = 60;
-const PUNKTE = [10, 8, 6, 5, 4, 3, 2, 1];
+const PUNKTE = [15, 12, 10, 8, 7, 6, 5, 4, 3, 2, 1];   // ab Platz 12 gibt es keine Punkte mehr
 const TICKET_DAUER = 4 * 3600_000;
 const AUFHEBEN = 24 * 3600_000;         // so lange bleibt eine Olympiade ohne Aktivität erhalten
 const CODE_ZEICHEN = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-const EMOJIS = ['🦁', '🐯', '🐻', '🐼', '🦊', '🐸', '🐧', '🐵', '🦄', '🐙', '🦈', '🐢', '🦉', '🐨', '🦩', '🐳'];
+const EMOJIS = ['🦁', '🐯', '🐻', '🐼', '🦊', '🐸', '🐧', '🐵', '🦄', '🐙', '🦈', '🐢', '🦉', '🐨', '🦩', '🐳', '🐝', '🦒', '🐊', '🦔', '🐺', '🦜'];
 
 const TYPEN = {
   '.html':'text/html; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.css':'text/css; charset=utf-8',
@@ -191,6 +191,27 @@ function vollstaendig(o){
   return spielerListe(o).every(s => l.werte[s.id]);
 }
 
+// Ranglisten der Gruppen zu Plätzen machen.
+// Eine Gruppe: ihre Reihenfolge zählt, gleicher Wert wie der Vordermann = gleicher Platz.
+// Mehrere Vorläufe: alle nach ihrer Leistung (wert, höher ist besser) zusammen sortiert,
+// damit nicht jeder Vorlaufsieger Platz 1 bekommt. Ohne Wert zählt der Platz im Vorlauf.
+function rangPlaetze(gruppen){
+  const alle = [];
+  for (const rang of gruppen) rang.forEach((r, i) => { if (!alle.some(a => a.s === r.s)) alle.push({ s:r.s, text:r.text || '', wert:r.wert, gp:i }); });
+  if (gruppen.length > 1){
+    alle.sort((a, b) => (b.wert != null) - (a.wert != null) || (a.wert != null ? b.wert - a.wert : 0) || a.gp - b.gp);
+  }
+  const gleich = (a, b) => gruppen.length > 1
+    ? (a.wert != null && b.wert != null ? a.wert === b.wert : a.wert == null && b.wert == null && a.gp === b.gp)
+    : a.wert != null && a.wert === b.wert;
+  const aus = [];
+  alle.forEach((r, i) => {
+    const platz = i > 0 && gleich(alle[i - 1], r) ? aus[i - 1].platz : i + 1;
+    aus.push({ s:r.s, platz, text:r.text });
+  });
+  return aus;
+}
+
 // Aus den Meldungen die Plätze machen und Punkte vergeben
 function auswerten(o, hand){
   const l = o.lauf;
@@ -201,16 +222,7 @@ function auswerten(o, hand){
   if (hand){
     plaetze = hand.map((s, i) => ({ s, platz:i + 1, text:'von Hand' }));
   } else if (spiel.wertung === 'rang'){
-    // In jeder Gruppe zählt die Reihenfolge; Vorläufe werden nebeneinander gewertet
-    for (const rang of Object.values(l.raenge)){
-      let vorher = null;
-      rang.forEach((r, i) => {
-        // Gleicher Wert wie der Vordermann (z. B. gleich viele Punkte) = gleicher Platz
-        const platz = vorher && r.wert != null && r.wert === vorher.wert ? vorher.platz : i + 1;
-        vorher = { wert:r.wert, platz };
-        if (o.spieler.has(r.s) && !plaetze.some(p => p.s === r.s)) plaetze.push({ s:r.s, platz, text:r.text || '' });
-      });
-    }
+    plaetze = rangPlaetze(Object.values(l.raenge)).filter(p => o.spieler.has(p.s));
   } else {
     const liste = Object.entries(l.werte).filter(([s]) => o.spieler.has(s)).sort((a, b) => b[1].wert - a[1].wert);
     liste.forEach(([s, w], i) => {
@@ -323,7 +335,7 @@ wss.on('connection', (ws, req) => {
         const name = nameOk(m.name);
         if (!name) return sende(ws, { t:'fehler', text:'Gib zuerst deinen Namen ein.', code:'name' });
         if (ziel.phase !== 'lobby') return fehler('Diese Olympiade läuft schon. Mitmachen geht nur vor dem Start.');
-        if (ziel.spieler.size >= MAX_SPIELER) return fehler('Die Olympiade ist voll (8 Leute).');
+        if (ziel.spieler.size >= MAX_SPIELER) return fehler(`Die Olympiade ist voll (${MAX_SPIELER} Leute).`);
         if (spielerListe(ziel).some(x => x.name.toLowerCase() === name.toLowerCase())) return fehler('Diesen Namen gibt es hier schon. Nimm einen anderen.');
         return verbinden(ws, ziel, spielerDazu(ziel, name, m.emoji));
       }
