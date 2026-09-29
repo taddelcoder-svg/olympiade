@@ -19,6 +19,7 @@ Signiert wird mit einem Schlüssel aus `ZUGANG_PASSWORT`. **Alle Dienste brauche
 | Iron Horizon | Gefechts-Challenge mit festem Startwert, ein Versuch | Punktzahl |
 | LifeSim | Vermögens-Sprint mit frischer Figur | Vermögenszuwachs |
 | Futbolero | gemeinsames Online-Spiel der Gruppe, auf zwei Teams verteilt, freie Plätze spielt der Computer, ab 9 Leuten mehrere Spiele | Siegerteam vorn, dann eigene Tore |
+| Pingu Towers | Tower-Defense allein auf derselben Karte mit denselben Fischwellen, ein Versuch | geschaffte Runden, dann übrige Leben |
 
 ## Dateien
 
