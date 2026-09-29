@@ -59,7 +59,7 @@ const SPIELE = {
   },
   fussball:{
     sp:'futbolero', name:'Futbolero', emoji:'⚽', pfad:'/', wertung:'wert',
-    online:'https://futbolero.onrender.com', lokal:10600,
+    online:'https://futbolero-nynr.onrender.com', lokal:10600,
     regel:'Jeder spielt ein eigenes Fußballspiel gegen denselben Computer-Gegner, ein Versuch. Gewertet wird die Tordifferenz, bei Gleichstand zählen mehr eigene Tore.',
     einst:[
       { id:'stufe', name:'Gegner', std:'normal', werte:[['leicht', 'Leicht'], ['normal', 'Normal'], ['schwer', 'Schwer']] },
