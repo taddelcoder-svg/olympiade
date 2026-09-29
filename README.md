@@ -18,6 +18,7 @@ Signiert wird mit einem Schlüssel aus `ZUGANG_PASSWORT`. **Alle Dienste brauche
 | Weltreiche | Vorläufe à max. 4 Reiche, Zeitlimit, danach gewinnt das größte Reich | über Vorläufe: Größe am Ende bzw. wie lange durchgehalten |
 | Iron Horizon | Gefechts-Challenge mit festem Startwert, ein Versuch | Punktzahl |
 | LifeSim | Vermögens-Sprint mit frischer Figur | Vermögenszuwachs |
+| Futbolero | ein Fußballspiel gegen denselben Computer-Gegner, ein Versuch | Tordifferenz, dann eigene Tore |
 
 ## Dateien
 

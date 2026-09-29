@@ -56,6 +56,16 @@ const SPIELE = {
     einst:[
       { id:'minuten', name:'Dauer', std:8, werte:[[5, '5 Min.'], [8, '8 Min.'], [12, '12 Min.']] }
     ]
+  },
+  fussball:{
+    sp:'futbolero', name:'Futbolero', emoji:'⚽', pfad:'/', wertung:'wert',
+    online:'https://futbolero.onrender.com', lokal:10600,
+    regel:'Jeder spielt ein eigenes Fußballspiel gegen denselben Computer-Gegner, ein Versuch. Gewertet wird die Tordifferenz, bei Gleichstand zählen mehr eigene Tore.',
+    einst:[
+      { id:'stufe', name:'Gegner', std:'normal', werte:[['leicht', 'Leicht'], ['normal', 'Normal'], ['schwer', 'Schwer']] },
+      { id:'dauer', name:'Spielzeit', std:2, werte:[[2, '2 Min.'], [4, '4 Min.']] },
+      { id:'groesse', name:'Spieler', std:5, werte:[[5, '5 gegen 5'], [7, '7 gegen 7']] }
+    ]
   }
 };
 
