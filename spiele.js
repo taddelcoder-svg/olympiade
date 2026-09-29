@@ -58,12 +58,12 @@ const SPIELE = {
     ]
   },
   fussball:{
-    sp:'futbolero', name:'Futbolero', emoji:'⚽', pfad:'/', wertung:'wert',
+    sp:'futbolero', name:'Futbolero', emoji:'⚽', pfad:'/', wertung:'rang', gruppeMax:8,
     online:'https://futbolero-nynr.onrender.com', lokal:10600,
-    regel:'Jeder spielt ein eigenes Fußballspiel gegen denselben Computer-Gegner, ein Versuch. Gewertet wird die Tordifferenz, bei Gleichstand zählen mehr eigene Tore.',
+    regel:'Ein Online-Spiel eurer Gruppe: Ihr werdet auf zwei Teams verteilt, jeder steuert einen Spieler, freie Plätze spielt der Computer. Das Siegerteam liegt vorn, innerhalb eines Teams zählen die eigenen Tore. Ab 9 Leuten gibt es mehrere Spiele, gewertet wird zusammen.',
     einst:[
-      { id:'stufe', name:'Gegner', std:'normal', werte:[['leicht', 'Leicht'], ['normal', 'Normal'], ['schwer', 'Schwer']] },
-      { id:'dauer', name:'Spielzeit', std:2, werte:[[2, '2 Min.'], [4, '4 Min.']] },
+      { id:'stufe', name:'Computer', std:'normal', werte:[['leicht', 'Leicht'], ['normal', 'Normal'], ['schwer', 'Schwer']] },
+      { id:'dauer', name:'Spielzeit', std:4, werte:[[2, '2 Min.'], [4, '4 Min.'], [6, '6 Min.']] },
       { id:'groesse', name:'Spieler', std:5, werte:[[5, '5 gegen 5'], [7, '7 gegen 7']] }
     ]
   },
