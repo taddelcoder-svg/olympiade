@@ -66,6 +66,16 @@ const SPIELE = {
       { id:'dauer', name:'Spielzeit', std:2, werte:[[2, '2 Min.'], [4, '4 Min.']] },
       { id:'groesse', name:'Spieler', std:5, werte:[[5, '5 gegen 5'], [7, '7 gegen 7']] }
     ]
+  },
+  tuerme:{
+    sp:'pingutowers', name:'Pingu Towers', emoji:'🐧', pfad:'/', wertung:'wert',
+    online:'https://pingutowers.onrender.com', lokal:10700,
+    regel:'Tower-Defense: Jeder verteidigt allein denselben Eiskanal mit Pinguinen gegen dieselben Fischwellen, ein Versuch. Wer die meisten Runden schafft, gewinnt – bei Gleichstand zählen die übrigen Leben.',
+    einst:[
+      { id:'karte', name:'Karte', std:'scholle', werte:[['scholle', 'Eisscholle'], ['spalte', 'Gletscherspalte'], ['nacht', 'Polarnacht']] },
+      { id:'stufe', name:'Schwierigkeit', std:'mittel', werte:[['leicht', 'Leicht'], ['mittel', 'Mittel'], ['schwer', 'Schwer']] },
+      { id:'runden', name:'Runden', std:30, werte:[[20, '20 Runden'], [30, '30 Runden'], [40, '40 Runden']] }
+    ]
   }
 };
 
