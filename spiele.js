@@ -79,7 +79,7 @@ const SPIELE = {
   },
   boxen:{
     sp:'ringfieber', name:'Ringfieber', emoji:'🥊', pfad:'/', wertung:'rang', gruppeMax:16,
-    online:'https://ringfieber.onrender.com', lokal:10800,
+    online:'https://boxing-w060.onrender.com', lokal:10800,
     regel:'Boxturnier im K.-o.-System: Ihr boxt eins gegen eins, wer verliert, scheidet aus und schaut zu – mit Kampf um Platz 3. Dahinter zählt, wie weit man kam und wie viel Schaden man austeilte.',
     einst:[
       { id:'dauer', name:'Kampfdauer', std:90, werte:[[60, '60 Sek.'], [90, '90 Sek.'], [120, '2 Min.']] },
