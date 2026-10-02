@@ -76,6 +76,15 @@ const SPIELE = {
       { id:'stufe', name:'Schwierigkeit', std:'mittel', werte:[['leicht', 'Leicht'], ['mittel', 'Mittel'], ['schwer', 'Schwer']] },
       { id:'runden', name:'Runden', std:30, werte:[[20, '20 Runden'], [30, '30 Runden'], [40, '40 Runden']] }
     ]
+  },
+  boxen:{
+    sp:'ringfieber', name:'Ringfieber', emoji:'🥊', pfad:'/', wertung:'rang', gruppeMax:16,
+    online:'https://ringfieber.onrender.com', lokal:10800,
+    regel:'Boxturnier im K.-o.-System: Ihr boxt eins gegen eins, wer verliert, scheidet aus und schaut zu – mit Kampf um Platz 3. Dahinter zählt, wie weit man kam und wie viel Schaden man austeilte.',
+    einst:[
+      { id:'dauer', name:'Kampfdauer', std:90, werte:[[60, '60 Sek.'], [90, '90 Sek.'], [120, '2 Min.']] },
+      { id:'platz3', name:'Kampf um Platz 3', std:1, werte:[[1, 'Ja'], [0, 'Nein']] }
+    ]
   }
 };
 
