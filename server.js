@@ -154,6 +154,14 @@ function aufwecken(spiel){
   const url = spielUrl(spiel);
   fetch(url + '/healthz', { signal:AbortSignal.timeout(60_000) }).catch(() => {});
 }
+// Das nächste Spiel wach halten, damit beim Wechsel niemand auf den Kaltstart wartet
+// (in der Lobby ist das die erste Disziplin). Höchstens alle 10 Minuten, außer sofort.
+function naechsteWecken(o, sofort){
+  const naechste = o.plan[o.nr + 1];
+  if (!naechste || (!sofort && Date.now() - (o.geweckt || 0) < 10 * 60_000)) return;
+  o.geweckt = Date.now();
+  aufwecken(naechste.spiel);
+}
 
 function disziplinStarten(o){
   o.nr++;
@@ -168,8 +176,7 @@ function disziplinStarten(o){
   laeufe.set(l.id, o);
   o.phase = 'disziplin';
   aufwecken(spiel);
-  const naechste = o.plan[o.nr + 1];
-  if (naechste) setTimeout(() => aufwecken(naechste.spiel), 60_000);
+  setTimeout(() => { if (o.lauf === l) naechsteWecken(o, true); }, 60_000);
 }
 
 function ticketFuer(o, s, basis){
@@ -245,6 +252,7 @@ function auswerten(o, hand){
   ergebnis.sort((a, b) => (a.platz ?? 99) - (b.platz ?? 99));
   o.verlauf.push({ spiel:l.spiel, einst:l.einst, finale, ergebnis });
   o.phase = 'wertung';
+  naechsteWecken(o);
   verteilen(o);
 }
 
@@ -434,7 +442,9 @@ setInterval(() => {
   }
   const jetzt = Date.now();
   for (const [code, o] of olympiaden){
-    if (jetzt - o.zuletzt > AUFHEBEN){ if (o.lauf) laeufe.delete(o.lauf.id); olympiaden.delete(code); }
+    if (jetzt - o.zuletzt > AUFHEBEN){ if (o.lauf) laeufe.delete(o.lauf.id); olympiaden.delete(code); continue; }
+    // Nur solange jemand dabei ist (sonst hielten verlassene Olympiaden die Spiele ewig wach)
+    if (o.phase !== 'ende' && jetzt - o.zuletzt < 30 * 60_000) naechsteWecken(o);
   }
 }, 30_000).unref();
 
