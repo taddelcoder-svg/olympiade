@@ -85,6 +85,15 @@ const SPIELE = {
       { id:'dauer', name:'Kampfdauer', std:90, werte:[[60, '60 Sek.'], [90, '90 Sek.'], [120, '2 Min.']] },
       { id:'platz3', name:'Kampf um Platz 3', std:1, werte:[[1, 'Ja'], [0, 'Nein']] }
     ]
+  },
+  kueche:{
+    sp:'loewenkueche', name:'Löwenküche', emoji:'🦁', pfad:'/', wertung:'rang', gruppeMax:12,
+    online:'https://l-wenk-che.onrender.com', lokal:10900,
+    regel:'Koch-Schicht: Jeder kocht in seiner eigenen Küche, alle bekommen denselben Ansturm an Gästen. Wer am Ende am meisten verdient hat, gewinnt – Trinkgeld gibt es für schnelles Servieren, wütende Gäste kosten Münzen.',
+    einst:[
+      { id:'menu', name:'Gerichte', std:'einfach', werte:[['einfach', 'Salat & Burger'], ['mittel', '+ Steak & Pommes'], ['voll', '+ Pizza']] },
+      { id:'dauer', name:'Dauer', std:240, werte:[[180, '3 Min.'], [240, '4 Min.'], [300, '5 Min.']] }
+    ]
   }
 };
 
