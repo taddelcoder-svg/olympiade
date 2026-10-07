@@ -70,9 +70,9 @@ const SPIELE = {
   tuerme:{
     sp:'pingutowers', name:'Pingu Towers', emoji:'🐧', pfad:'/', wertung:'wert',
     online:'https://pingutowers.onrender.com', lokal:10700,
-    regel:'Tower-Defense: Jeder verteidigt allein denselben Eiskanal mit Pinguinen gegen dieselben Fischwellen, ein Versuch. Wer die meisten Runden schafft, gewinnt – bei Gleichstand zählen die übrigen Leben.',
+    regel:'Tower-Defense: Jeder verteidigt allein denselben Eiskanal mit Pinguinen und einem Helden gegen dieselben Fischwellen, ein Versuch. Wer die meisten Runden schafft, gewinnt – bei Gleichstand zählen die übrigen Leben.',
     einst:[
-      { id:'karte', name:'Karte', std:'scholle', werte:[['scholle', 'Eisscholle'], ['spalte', 'Gletscherspalte'], ['nacht', 'Polarnacht']] },
+      { id:'karte', name:'Karte', std:'scholle', werte:[['scholle', 'Eisscholle'], ['bucht', 'Pinguinbucht'], ['spalte', 'Gletscherspalte'], ['erebus', 'Erebus-Krater'], ['nacht', 'Polarnacht'], ['doppel', 'Doppelstrom']] },
       { id:'stufe', name:'Schwierigkeit', std:'mittel', werte:[['leicht', 'Leicht'], ['mittel', 'Mittel'], ['schwer', 'Schwer']] },
       { id:'runden', name:'Runden', std:30, werte:[[20, '20 Runden'], [30, '30 Runden'], [40, '40 Runden']] }
     ]
