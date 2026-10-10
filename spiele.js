@@ -39,14 +39,6 @@ const SPIELE = {
       { id:'karte', name:'Karte', std:'zufall', werte:[['zufall', 'Zufall'], ['mittelinsel', 'Mittelinsel'], ['flussland', 'Flussland'], ['dreilaendereck', 'Dreiländereck'], ['vierwinde', 'Vier Winde']] }
     ]
   },
-  leben:{
-    sp:'lifesim', name:'LifeSim', emoji:'🏙️', pfad:'/', wertung:'wert',
-    online:'https://lifesim-842c.onrender.com', lokal:3000,
-    regel:'Vermögens-Sprint: Jeder startet mit einer frischen Figur und 500 €. Wer nach Ablauf der Zeit am meisten Vermögen dazugewonnen hat, gewinnt.',
-    einst:[
-      { id:'minuten', name:'Dauer', std:8, werte:[[5, '5 Min.'], [8, '8 Min.'], [12, '12 Min.']] }
-    ]
-  },
   fussball:{
     sp:'futbolero', name:'Futbolero', emoji:'⚽', pfad:'/', wertung:'rang', gruppeMax:8,
     online:'https://futbolero-nynr.onrender.com', lokal:10600,
@@ -58,7 +50,7 @@ const SPIELE = {
     ]
   },
   tuerme:{
-    sp:'pingutowers', name:'Pingu Towers', emoji:'🐧', pfad:'/', wertung:'wert',
+    sp:'pingutowers', name:'Pinguin Türmchen', emoji:'🐧', pfad:'/', wertung:'wert',
     online:'https://pingutowers.onrender.com', lokal:10700,
     regel:'Tower-Defense: Jeder verteidigt allein denselben Eiskanal mit Pinguinen und einem Helden gegen dieselben Fischwellen, ein Versuch. Wer die meisten Runden schafft, gewinnt – bei Gleichstand zählen die übrigen Leben.',
     einst:[

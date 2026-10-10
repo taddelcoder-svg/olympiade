@@ -16,9 +16,8 @@ Signiert wird mit einem Schlüssel aus `ZUGANG_PASSWORT`. **Alle Dienste brauche
 | Weltenbummler | gemeinsame Runden | Punkte → Reihenfolge |
 | Blaue Stunde | eigene Lobby, 3-Minuten-Rennen, ohne Fahrernamen | Punkte → Reihenfolge |
 | Weltreiche | Vorläufe à max. 4 Reiche, Zeitlimit, danach gewinnt das größte Reich | über Vorläufe: Größe am Ende bzw. wie lange durchgehalten |
-| LifeSim | Vermögens-Sprint mit frischer Figur | Vermögenszuwachs |
 | Futbolero | gemeinsames Online-Spiel der Gruppe, auf zwei Teams verteilt, freie Plätze spielt der Computer, ab 9 Leuten mehrere Spiele | Siegerteam vorn, dann eigene Tore |
-| Pingu Towers | Tower-Defense allein auf derselben Karte mit denselben Fischwellen, ein Versuch | geschaffte Runden, dann übrige Leben |
+| Pinguin Türmchen | Tower-Defense allein auf derselben Karte mit denselben Fischwellen, ein Versuch | geschaffte Runden, dann übrige Leben |
 | Ringfieber | K.-o.-Boxturnier der ganzen Gruppe (bis 16), Server rechnet die Kämpfe, Kampf um Platz 3, fehlt jemand: Start nach 90 s | Platz im Turnier, dahinter erreichte Runde und ausgeteilter Schaden |
 
 ## Dateien
