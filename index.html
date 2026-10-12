@@ -105,7 +105,7 @@
         <button id="linkKopieren" class="knopf zweit">Link kopieren</button>
       </div>
     </div>
-    <div class="spalten">
+    <div class="spalten lobby-spalten">
       <div class="karte">
         <h2>Teilnehmer <span id="anzahl" class="leise"></span></h2>
         <ul id="lobbySpieler" class="spielerliste"></ul>
@@ -121,7 +121,7 @@
     <div class="aktion">
       <button id="starten" class="knopf haupt gross">Olympiade starten</button>
       <p id="lobbyInfo" class="leise"></p>
-      <button id="verlassen" class="knopf leer">Olympiade verlassen</button>
+      <button id="verlassen" class="knopf leer gefahr">Olympiade verlassen</button>
     </div>
   </section>
 
@@ -158,7 +158,7 @@
       <div class="knopfreihe">
         <button id="auswerten" class="knopf zweit">Jetzt auswerten</button>
         <button id="handAuf" class="knopf zweit">Ergebnis von Hand</button>
-        <button id="ueberspringen" class="knopf zweit">Disziplin überspringen</button>
+        <button id="ueberspringen" class="knopf zweit gefahr">Disziplin überspringen</button>
       </div>
       <p class="leise klein">„Jetzt auswerten“: Wer noch kein Ergebnis hat, bekommt 0 Punkte.</p>
       <div id="hand" hidden>
@@ -191,6 +191,7 @@
 
   <!-- Siegerehrung -->
   <section id="ende" class="schirm" hidden>
+    <div id="konfetti" class="konfetti" aria-hidden="true"></div>
     <p class="ueber">Siegerehrung</p>
     <h1 id="eTitel">Die Olympiade ist vorbei!</h1>
     <div id="podest" class="podest"></div>

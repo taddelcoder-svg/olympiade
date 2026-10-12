@@ -205,6 +205,12 @@ function lobbyZeigen(){
   }
 }
 
+// Aufgeklappte Regeltexte bleiben beim Neuzeichnen des Plans offen
+const regelOffen = new Set();
+function merkeRegel(li, id){
+  const det = li.querySelector('.regel-kurz');
+  if (det) det.addEventListener('toggle', () => { if (det.open) regelOffen.add(id); else regelOffen.delete(id); });
+}
 function planZeigen(){
   const leiter = istLeiter();
   // Die Leitung sieht alle Spiele (ausgewählte zuerst), die anderen nur den Plan
@@ -223,12 +229,15 @@ function planZeigen(){
     const li = document.createElement('li');
     if (!d.an) li.className = 'aus';
     const icon = `<div class="icon">${sp.emoji}</div>`;
+    const regel = `<details class="regel-kurz"${regelOffen.has(d.spiel) ? ' open' : ''}><summary>Regeln</summary><p>${esc(sp.regel || '')}</p></details>`;
     if (!leiter){
-      li.innerHTML = `${icon}<div><div class="titel">${i + 1}. ${esc(sp.name)}</div><div class="leise klein">${esc(einstText(d.spiel, d.einst))}</div></div><span></span>`;
+      li.innerHTML = `${icon}<div><div class="titel"><span class="nr">${i + 1}</span>${esc(sp.name)}</div><div class="leise klein">${esc(einstText(d.spiel, d.einst))}</div></div><span></span>${regel}`;
+      merkeRegel(li, d.spiel);
       ol.appendChild(li);
       return;
     }
-    li.innerHTML = `${icon}<label class="schalter"><input type="checkbox" ${d.an ? 'checked' : ''}><span class="titel">${esc(sp.name)}</span></label><div class="pfeile"></div><div class="werte"></div>`;
+    li.innerHTML = `${icon}<label class="schalter"><input type="checkbox" ${d.an ? 'checked' : ''}><span class="titel">${esc(sp.name)}</span></label><div class="pfeile"></div><div class="werte"></div>${regel}`;
+    merkeRegel(li, d.spiel);
     li.querySelector('input').onchange = e => { d.an = e.target.checked; planSenden(); };
     const pfeile = li.querySelector('.pfeile');
     const hoch = knopf('↑', 'klein', () => { if (i > 0){ [plan[i - 1], plan[i]] = [plan[i], plan[i - 1]]; planSenden(); } });
@@ -322,7 +331,7 @@ function disziplinZeigen(){
     const z = l.zustand[s.id] || { was:'bereit' };
     const li = document.createElement('li');
     li.innerHTML = `<span class="tier">${esc(s.emoji)}</span><span class="name">${esc(s.name)}${l.jokerHier.includes(s.id) ? ' 🃏' : ''}</span>
-      <span class="marke-klein">${z.was === 'fertig' ? '✓ ' + esc(z.text || 'fertig') : esc(ZUSTAND[z.was] || z.was)}</span>`;
+      <span class="marke-klein z-${esc(z.was)}">${z.was === 'fertig' ? '✓ ' + esc(z.text || 'fertig') : esc(ZUSTAND[z.was] || z.was)}</span>`;
     ul.appendChild(li);
   }
   // Leitung
@@ -359,7 +368,7 @@ function gesamtListe(ziel, vorher){
   ziel.innerHTML = '';
   for (const s of liste){
     const li = document.createElement('li');
-    if (s.id === stand.du) li.className = 'ich';
+    li.className = (s.id === stand.du ? 'ich ' : '') + (s.platz <= 3 ? 'platz-' + s.platz : '');
     let aenderung = '';
     if (altPlatz && altPlatz.has(s.id)){
       const d = altPlatz.get(s.id) - s.platz;
@@ -385,7 +394,7 @@ function wertungZeigen(){
   for (const e of v.ergebnis){
     const s = spielerVon(e.s);
     const li = document.createElement('li');
-    if (e.s === stand.du) li.className = 'ich';
+    li.className = (e.s === stand.du ? 'ich ' : '') + (e.platz && e.platz <= 3 ? 'platz-' + e.platz : '');
     const platz = e.platz ? (e.platz <= 3 ? MEDAILLE[e.platz - 1] : e.platz + '.') : '–';
     li.innerHTML = `<span class="platz">${platz}</span><span class="tier">${esc(s.emoji)}</span>
       <span class="name">${esc(s.name)}${e.joker ? ' 🃏' : ''}<span class="detail">${esc(e.text)}</span></span><span class="pkt plus">+${e.punkte}</span>`;
@@ -423,6 +432,7 @@ function endeZeigen(){
     podest.appendChild(div);
   }
   gesamtListe($('#eGesamt'), null);
+  konfettiStreuen();
   const ul = $('#eSieger');
   ul.innerHTML = '';
   for (const v of stand.verlauf){
@@ -445,6 +455,24 @@ function endeZeigen(){
   const letzter = liste[liste.length - 1];
   if (liste.length > 2 && letzter.platz !== 1) aus.push(`🐢 Rote Laterne: ${esc(letzter.name)} – nächstes Mal!`);
   $('#eAuszeichnungen').innerHTML = aus.length ? aus.map(a => `<li>${a}</li>`).join('') : '<li class="leise">Diesmal keine.</li>';
+}
+// Dezentes Konfetti, nur einmal pro Siegerehrung
+let konfettiFuer = null;
+function konfettiStreuen(){
+  if (konfettiFuer === stand.code) return;
+  konfettiFuer = stand.code;
+  const box = $('#konfetti');
+  box.innerHTML = '';
+  const farben = ['#f0c13a', '#e2463b', '#54c3da', '#0a5f8a', '#7bd88f', '#ff9ec4'];
+  for (let i = 0; i < 36; i++){
+    const c = document.createElement('i');
+    c.style.left = Math.random() * 100 + '%';
+    c.style.background = farben[i % farben.length];
+    c.style.animationDelay = (Math.random() * 1.4).toFixed(2) + 's';
+    c.style.animationDuration = (2.8 + Math.random() * 2).toFixed(2) + 's';
+    box.appendChild(c);
+  }
+  setTimeout(() => { if (box.isConnected) box.innerHTML = ''; }, 7000);
 }
 $('#nochmal').onclick = () => {
   if (stand) speicher.schreiben('platz.' + stand.code, null);
