@@ -19,6 +19,10 @@ Signiert wird mit einem Schlüssel aus `ZUGANG_PASSWORT`. **Alle Dienste brauche
 | Futbolero | gemeinsames Online-Spiel der Gruppe, auf zwei Teams verteilt, freie Plätze spielt der Computer, ab 9 Leuten mehrere Spiele | Siegerteam vorn, dann eigene Tore |
 | Pinguin Türmchen | Tower-Defense allein auf derselben Karte mit denselben Fischwellen, ein Versuch | geschaffte Runden, dann übrige Leben |
 | Ringfieber | K.-o.-Boxturnier der ganzen Gruppe (bis 16), Server rechnet die Kämpfe, Kampf um Platz 3, fehlt jemand: Start nach 90 s | Platz im Turnier, dahinter erreichte Runde und ausgeteilter Schaden |
+| Löwenküche | jeder kocht in seiner eigenen Küche mit demselben Ansturm | verdientes Geld |
+| Iron Horizon | Panzergefecht auf Blau und Rot, freie Plätze fahren Bots | Punkte aus Sieg, Abschüssen, Treffern, Zeit am Punkt |
+| Schanzenlöwe | allein auf derselben Strecke, ein Versuch | Punkte aus Meter, Ziel, Zeit, Münzen, Tricks |
+| Quaderland | Sammel-Wettlauf in derselben Welt, ein Versuch | Wert der gesammelten Rohstoffe |
 
 ## Dateien
 
