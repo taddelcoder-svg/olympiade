@@ -420,6 +420,8 @@ function endeZeigen(){
   zeigen('ende');
   const liste = mitPlatz(rangliste(stand.spieler));
   const sieger = liste.filter(s => s.platz === 1);
+  const ichO = liste.find(s => s.id === stand.du);
+  if (ichO && window.__slOly !== stand.code) { window.__slOly = stand.code; window.SLZaehle && SLZaehle('sl_olympiade', s => { s.spiele = (s.spiele || 0) + 1; s.best = Math.max(s.best || 0, ichO.punkte || 0); if (ichO.platz <= 3) (s.podest = s.podest || {})[ichO.platz] = 1; }); }
   $('#eTitel').textContent = sieger.length === 1 ? `${sieger[0].emoji} ${sieger[0].name} gewinnt die Olympiade!` : `Gleichstand an der Spitze: ${sieger.map(s => s.name).join(' & ')}!`;
   const podest = $('#podest');
   podest.innerHTML = '';
