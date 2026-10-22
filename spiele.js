@@ -94,23 +94,6 @@ const SPIELE = {
     einst:[
       { id:'stufe', name:'Schwierigkeit', std:1, werte:[[0, 'Leicht'], [1, 'Normal'], [2, 'Schwer']] }
     ]
-  },
-  quader:{
-    sp:'quaderland', name:'Quaderland', emoji:'⛏️', pfad:'/', wertung:'wert',
-    online:'https://quaderdings.onrender.com', lokal:11100,
-    regel:'Sammel-Wettlauf: Jeder spielt allein im Überlebensmodus dieselbe Welt, schlägt Bäume, baut Werkzeuge und sammelt Rohstoffe. Erde und Holz bringen wenig, Kohle, Eisen, Gold und Diamanten viel; selbst gesetzte Blöcke zählen nicht. Ein Versuch, wer die meisten Punkte hat, gewinnt.',
-    einst:[
-      { id:'minuten', name:'Spielzeit', std:5, werte:[[3, '3 Min.'], [5, '5 Min.'], [8, '8 Min.']] }
-    ]
-  },
-  angeln:{
-    sp:'fischfieber', name:'Fischfieber', emoji:'🎣', pfad:'/', wertung:'wert',
-    online:'https://lionfishing.onrender.com', lokal:11200,
-    regel:'Angelturnier auf einer Insel: Jeder angelt allein mit festem Zeitlimit, ohne Shop und Casino – dieselbe Insel, dieselbe Ausrüstung, dieselbe Fisch-Reihenfolge für alle, ein Versuch. Es zählt der Wert aller gefangenen Fische (Ohnmacht kostet 20 $).',
-    einst:[
-      { id:'dauer', name:'Dauer', std:240, werte:[[180, '3 Min.'], [240, '4 Min.'], [300, '5 Min.']] },
-      { id:'insel', name:'Insel', std:1, werte:[[1, 'Schiffbruch-Insel'], [2, 'Haifisch-Atoll']] }
-    ]
   }
 };
 
