@@ -22,8 +22,6 @@ Signiert wird mit einem Schlüssel aus `ZUGANG_PASSWORT`. **Alle Dienste brauche
 | Löwenküche | jeder kocht in seiner eigenen Küche mit demselben Ansturm | verdientes Geld |
 | Iron Horizon | Panzergefecht auf Blau und Rot, freie Plätze fahren Bots | Punkte aus Sieg, Abschüssen, Treffern, Zeit am Punkt |
 | Schanzenlöwe | allein auf derselben Strecke, ein Versuch | Punkte aus Meter, Ziel, Zeit, Münzen, Tricks |
-| Quaderland | Sammel-Wettlauf in derselben Welt, ein Versuch | Wert der gesammelten Rohstoffe |
-| Fischfieber | Angelturnier allein auf derselben Insel, ein Versuch | Wert der gefangenen Fische |
 
 ## Dateien
 
